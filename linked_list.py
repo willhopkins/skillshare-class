@@ -1,22 +1,27 @@
 from exceptions import Empty
 
 class LinkedList():
+
     class _Node():
         __slots__ = '_element', '_next'
         def __init__(self, element, next):
             self._element = element
             self._next = next
 
+
     def __init__(self):
         self._head = None
         self._tail = None
         self._size = 0
 
+
     def __len__(self):
         return self._size
 
+
     def is_empty(self):
         return self._size == 0
+
 
     def add_first(self, element):
         newest = self._Node(element, None)
@@ -28,6 +33,7 @@ class LinkedList():
         self._head = newest
         self._size += 1
 
+
     def add_last(self, element):
         newest = self._Node(element, None)
         if self.is_empty():
@@ -37,6 +43,7 @@ class LinkedList():
         newest._next = None
         self._tail = newest
         self._size += 1
+
 
     def add_any(self, element, position):
         newest = self._Node(element, None)
@@ -51,6 +58,7 @@ class LinkedList():
         newest._next = temp_head._next
         temp_head._next = newest
         self._size += 1
+
 
     def remove_first(self):
         if self.is_empty():
@@ -78,6 +86,7 @@ class LinkedList():
         self._size -= 1
         return value
 
+
     def remove_any(self, position):
         if self.is_empty():
             raise Empty('The linked list is empty.')
@@ -91,12 +100,14 @@ class LinkedList():
         self._size -= 1
         return value
 
+
     def display(self):
         temp_head = self._head
         while temp_head:
             print(temp_head._element, end='-->')
             temp_head = temp_head._next
         print()
+
 
 a_linked_list = LinkedList()
 a_linked_list.add_last(10)
